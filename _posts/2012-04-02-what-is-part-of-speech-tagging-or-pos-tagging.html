@@ -1,0 +1,88 @@
+---
+layout: post
+title: What is Part of Speech Tagging or POS tagging?
+date: 2012-04-02 16:57:59.000000000 +05:30
+categories:
+- Natural Language Processing(NLP)
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '21508824'
+  publicize_results: a:2:{s:7:"twitter";a:1:{s:0:"";a:2:{s:7:"user_id";s:0:"";s:7:"post_id";s:0:"";}}s:2:"fb";a:1:{i:181985098552215;a:2:{s:7:"user_id";s:15:"181985098552215";s:7:"post_id";s:15:"273485082735549";}}}
+  _wpas_done_fb: '1'
+  _wpas_done_linkedin: '1'
+author: 
+---
+<p>POS is the process of marking up a word in a text as corresponding to a particular <a title="Parts of speech" href="http://en.wikipedia.org/wiki/Parts_of_speech">part of speech</a>, based on both its definition, as well as its context.Before we deep down to know about POS tagging its important to know about Parts of Speech.There are mainly 8 part of speech that define the words into different categories. Here is a short summary of Parts of Speech.</p>
+<table width="100%" border="1" cellspacing="0" cellpadding="7">
+<tbody>
+<tr>
+<td><strong>part of speech</strong></td>
+<td><strong>function or "job"</strong></td>
+<td><strong>example words</strong></td>
+<td><strong>example sentences</strong></td>
+</tr>
+<tr>
+<td><a href="verbs.htm">Verb</a></td>
+<td>action or state</td>
+<td>(to) be, have, do, like, work, sing, can, must</td>
+<td>EnglishClub.com <strong>is</strong> a web site. I <strong>like</strong> EnglishClub.com.</td>
+</tr>
+<tr>
+<td><a href="nouns.htm">Noun</a></td>
+<td>thing or person</td>
+<td>pen, dog, work, music, town, London, teacher, John</td>
+<td>This is my <strong>dog</strong>. He lives in my <strong>house</strong>. We live in <strong>London</strong>.</td>
+</tr>
+<tr>
+<td><a href="adjectives.htm">Adjective</a></td>
+<td>describes a noun</td>
+<td>a/an, the, 69, some, good, big, red, well, interesting</td>
+<td>My dog is <strong>big</strong>. I like <strong>big</strong> dogs.</td>
+</tr>
+<tr>
+<td><a href="adverbs.htm">Adverb</a></td>
+<td>describes a verb, adjective or adverb</td>
+<td>quickly, silently, well, badly, very, really</td>
+<td>My dog eats <strong>quickly</strong>. When he is <strong>very</strong> hungry, he eats <strong>really</strong> quickly.</td>
+</tr>
+<tr>
+<td><a href="pronouns.htm">Pronoun</a></td>
+<td>replaces a noun</td>
+<td>I, you, he, she, some</td>
+<td>Tara is Indian. <strong>She</strong> is beautiful.</td>
+</tr>
+<tr>
+<td><a href="prepositions.htm">Preposition</a></td>
+<td>links a noun to another word</td>
+<td>to, at, after, on, but</td>
+<td>We went <strong>to</strong> school <strong>on</strong> Monday.</td>
+</tr>
+<tr>
+<td><a href="conjunctions.htm">Conjunction</a></td>
+<td>joins clauses or sentences or words</td>
+<td>and, but, when</td>
+<td>I like dogs <strong>and</strong> I like cats. I like cats <strong>and</strong> dogs. I like dogs <strong>but</strong> I don't like cats.</td>
+</tr>
+<tr>
+<td><a href="interjections.htm">Interjection</a></td>
+<td>short exclamation, sometimes inserted into a sentence</td>
+<td>oh!, ouch!, hi!, well</td>
+<td><strong>Ouch</strong>! That hurts! <strong>Hi</strong>! How are you? <strong>Well</strong>, I don't know.</td>
+</tr>
+</tbody>
+</table>
+<p>A Part-Of-Speech Tagger (POS Tagger) is a piece of software that reads text in some language and assigns parts of speech to each word (and other token). Let's take an example,</p>
+<p>Input for the POS tagger be,</p>
+<p><code>The strongest rain ever recorded in India shut down the financial hub of Mumbai, snapped communication lines, closed airports and forced thousands of people to sleep in their offices or walk home during the night, officials said today.</code></p>
+<p>Then the output of the POS tagger should look like,</p>
+<pre>The/DT strongest/JJS rain/NN ever/RB recorded/VBN in/IN India/NNP
+shut/VBD down/RP the/DT financial/JJ hub/NN of/IN Mumbai/NNP ,/,
+snapped/VBD communication/NN lines/NNS ,/, closed/VBD airports/NNS
+and/CC forced/VBD thousands/NNS of/IN people/NNS to/TO sleep/VB in/IN
+their/PRP$ offices/NNS or/CC walk/VB home/NN during/IN the/DT night/NN
+,/, officials/NNS said/VBD today/NN ./.</pre>
+<p>Here the NN tag refers to Normal Noun, JJ refers to adjective, etc,. to know more about the tags click here.</p>
+<p><span style="text-decoration:underline;"><strong>Reference:</strong></span>  http://nlp.stanford.edu/software/lex-parser.shtml</p>

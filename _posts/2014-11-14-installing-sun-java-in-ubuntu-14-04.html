@@ -1,0 +1,46 @@
+---
+layout: post
+title: Installing Sun Java in Ubuntu 14.04
+date: 2014-11-14 14:56:29.000000000 +05:30
+categories:
+- Bigdata
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _publicize_pending: '1'
+  publicize_facebook_url: https://facebook.com/181985098552215_733132123437507
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _wpas_skip_tumblr: '1'
+  _wpas_skip_path: '1'
+  _wpas_done_6773448: '1'
+  _publicize_done_external: a:1:{s:8:"facebook";a:1:{i:1670919782;b:1;}}
+  publicize_google_plus_url: https://plus.google.com/102543582493291172027/posts/RJTv9TCsPR7
+  _wpas_done_7091431: '1'
+  publicize_twitter_user: shravanthium
+  publicize_twitter_url: http://t.co/rLzYngEbsf
+  _wpas_done_2043461: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=113379456&stype=M&topic=5938954952926842880&type=U&a=JiE0
+  _wpas_done_706780: '1'
+author: 
+---
+<p>Ubuntu comes with Open java and jdk but most of the time application developments demands for sun java.</p>
+<p>Steps to install Sun Java in Ubuntu 14.04</p>
+<p>1. Initial commands to execute</p>
+<pre><code>sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update</code></pre>
+<p>2. For Oracle JDK 6</p>
+<pre><code>sudo apt-get install oracle-java6-installer</code></pre>
+<p>3. For Oracle JDK 7</p>
+<pre><code>sudo apt-get install oracle-java7-installer</code></pre>
+<p>4. For Oracle JDK 8</p>
+<pre><code>sudo apt-get install oracle-java8-installer</code></pre>
+<p>5. Setting JAVA_HOME<br />
+Copy the path where preferred JDK is installed and edit /etc/environment file</p>
+<pre><code>sudo nano /etc/environment
+JAVA_HOME="YOUR_PATH"</code></pre>
+<p>6.Reload the file</p>
+<pre><code>source /etc/environment</code></pre>

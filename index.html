@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+  <div class ="container">
+
+  </div>
+
+  <div class="recent-posts">
+  <h1>Recent Posts</h1>
+    {% for post in site.posts limit: 3 %}   
+    <ul class="homepage-posts most-recent">
+    <li><span><h4>
+      <a href="{{ post.title }}">{{ post.title }}</a>
+     </li></span></h4>
+    </ul>
+    {% endfor %}
+    <ul>
+      <a href="{{ site.baseurl }}/list.html">View More...</a>
+</ul>
+  	</div>
+

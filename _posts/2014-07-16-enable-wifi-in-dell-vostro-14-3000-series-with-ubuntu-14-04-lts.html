@@ -1,0 +1,82 @@
+---
+layout: post
+title: Enable Wifi in Dell Vostro 14 3000 Series with Ubuntu 14.04 LTS
+date: 2014-07-16 02:31:34.000000000 +05:30
+categories:
+- Personal Encounters
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _wpas_skip_facebook: '1'
+  _wpas_skip_twitter: '1'
+  _wpas_skip_linkedin: '1'
+  _wpas_skip_tumblr: '1'
+  _wpas_skip_path: '1'
+author: 
+---
+<p>Ubuntu 14.04LTS is the latest LTS release available. I had Ubuntu 12.04LTS installed in my Dell Vostro. There is no option available for immediate upgrade to ubuntu 14.04LTS from 12.04LTS. Hence I decided to format and install fresh.</p>
+<p>There has always been considerable improvement in every new release of Ubuntu, but network connectivity has always been an obstacle while using Ubuntu releases.</p>
+<p>Below are the steps to enable the WIFI drivers.</p>
+<p>1. Check if valid WIFI adapter is available:</p>
+<pre>$ sudo lshw -C network
+<span id="line-2" class="anchor"> *-network               
+       description: Wireless interface
+       product: BCM43142 802.11b/g/n
+       vendor: Broadcom Corporation
+       physical id: 0
+       bus info: pci@0000:06:00.0
+       logical name: wlan0
+       version: 01
+       serial: 9c:d2:1e:e5:47:3f
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm msi pciexpress bus_master cap_list ethernet physical wireless
+       configuration: broadcast=yes driver=wl0 driverversion=6.30.223.141 (r415941) latency=0 multicast=yes wireless=IEEE 802.11abg
+       resources: irq:18 memory:f7900000-f7907fff
+  *-network
+       description: Ethernet interface
+       product: RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller
+       vendor: Realtek Semiconductor Co., Ltd.
+       physical id: 0
+       bus info: pci@0000:07:00.0
+       logical name: eth0
+       version: 0c
+       serial: b8:2a:72:ac:31:fa
+       size: 100Mbit/s
+       capacity: 1Gbit/s
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm msi pciexpress msix vpd bus_master cap_list ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=r8169 driverversion=2.3LK-NAPI duplex=full firmware=rtl8168g-2_0.0.1 02/06/13 ip=192.168.1.4 latency=0 link=yes multicast=yes port=MII speed=100Mbit/s
+       resources: irq:58 ioport:e000(size=256) memory:f7800000-f7800fff memory:f2100000-f2103fff
+</span></pre>
+<p>2. Check if WIFI is enabled:</p>
+<pre>$wpconfig
+<span id="line-2" class="anchor">wlan0     IEEE 802.11abg  ESSID:off/any  
+          Mode:Managed  Access Point: Not-Associated   
+          Retry  long limit:7   RTS thr:off   Fragment thr:off
+          Power Management:off
+          
+vboxnet0  no wireless extensions.
+
+lo        no wireless extensions.
+
+eth0      no wireless extensions.
+</span></pre>
+<p><span style="text-decoration:underline;"><strong>Solution:</strong></span></p>
+<p>Identify your Brodcom chipset family:</p>
+<pre>$ lspci -vvnn | grep 14e4
+<span id="line-2" class="anchor">output:
+06:00.0 Network controller [0280]: Broadcom Corporation BCM43142 802.11b/g/n [14e4:4365] (rev 01)
+</span></pre>
+<p>4. Install STA Drivers</p>
+<pre>sudo apt-get update
+<span id="line-2" class="anchor"></span>sudo apt-get install bcmwl-kernel-source</pre>
+<p>Now reboot the system to see your WIFI enabled.</p>
+<p>For it to be effective without reboot run the below commands:</p>
+<pre>sudo modprobe -r b43 ssb wl
+<span id="line-2-1" class="anchor"></span>sudo modprobe wl</pre>

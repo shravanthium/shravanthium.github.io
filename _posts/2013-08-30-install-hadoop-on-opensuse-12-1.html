@@ -1,0 +1,114 @@
+---
+layout: post
+title: Install hadoop on OpenSuse 12.1
+date: 2013-08-30 10:59:58.000000000 +05:30
+categories:
+- Bigdata
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '21508824'
+  _publicize_pending: '1'
+  publicize_twitter_user: shravanthium
+  _wpas_done_2043461: '1'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:122082953;b:1;}}
+  _wpas_done_706780: '1'
+  publicize_reach: a:2:{s:7:"twitter";a:1:{i:2043461;i:53;}s:2:"wp";a:1:{i:0;i:9;}}
+  _wpas_skip_2043461: '1'
+  _wpas_skip_706781: '1'
+  _wpas_skip_706780: '1'
+author: 
+---
+<p>Firstly, Pseudo-Distributed mode is effectively a 1 node Hadoop Cluster setup. This is really the best way to get started with Hadoop as it makes it really easy to modify the config to be fully distributed once you've got a handle on the basics.</p>
+<p><strong>Step 1:</strong> Update OpenSuse packages from Software manager.</p>
+<p><strong>Step 2:</strong>Install Sun JDK(<a href="http://shravanthimohan.wordpress.com/2013/08/30/installing-sun-jdk-in-opensuse-12-1/">click here</a> to refer the previous post to install Sun JDK in OpenSuse 12.1).</p>
+<p>Create a user "hadoop" on your suse machine and login with the user hadoop to carry out below activities.</p>
+<p><b>Step 3:Setup Passwordless SSH-</b> Activate  sshd  and set bootable from root bash.</p>
+<p>&gt;sudo bash<br />
+#rcsshd  start<br />
+#chkconfig  sshd  on</p>
+<p>Now create ssh key for connet ssh without password.<br />
+&gt;ssh-keygen  -N ''  -d  -q  -f  ~/.ssh/id_dsa<br />
+&gt;ssh-add   ~/.ssh/id_dsa<br />
+Identity added: /root/.ssh/id_dsa (/root/.ssh/id_dsa)</p>
+<p>Test connect to ssh without password -- with Key<br />
+&gt;ssh  localhost<br />
+The authenticity of host 'localhost (: :1)' can't be established.<br />
+RSA key fingerprint is 05:22:61:78:05:04:7e:d1:81:67:f2:d5:8a:42:bb:9f.<br />
+Are you sure you want to continue connecting (yes/no)? Please input   yes</p>
+<p><strong>Step 4:</strong>Hadoop Installation:<br />
+Download hadoop-0.21.0.tar.gz file from <a href="http://www.apache.org/dyn/closer.cgi/hadoop/core/">http://www.apache.org/dyn/closer.cgi/hadoop/core/</a></p>
+<p>Create a directory /home/hadoop/hadoop-install<br />
+/home/hadoop&gt; mkdir hadoop-install</p>
+<p>Extract the hadoop-0.21.0 tar file to this new directory.<br />
+/home/hadoop&gt;sudo tar -zxvf /home/hadoop/Downlods/hadoop-0.21.0.tar.gz</p>
+<p>Edit the following files in /home/hadoop/hadoop-install/hadoop-0.21.0/conf directory.</p>
+<p><strong>conf/core-site.xml</strong><br />
+&lt;?xml version="1.0"?&gt;<br />
+&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;<br />
+&lt;!-- Put site-specific property overrides in this file. --&gt;<br />
+&lt;configuration&gt;<br />
+&lt;property&gt;<br />
+&lt;name&gt;hadoop.tmp.dir&lt;/name&gt;<br />
+&lt;value&gt;/home/hadoop/hadoop-install/hadoop-datastore/&lt;/value&gt;<br />
+&lt;description&gt;A base for other temporary directories.&lt;/description&gt;<br />
+&lt;/property&gt;<br />
+&lt;property&gt;<br />
+&lt;name&gt;fs.default.name&lt;/name&gt;<br />
+&lt;value&gt;hdfs://local:54310&lt;/value&gt;<br />
+&lt;/property&gt;<br />
+&lt;/configuration&gt;</p>
+<p><strong>conf/mapred-site.xml</strong><br />
+&lt;?xml version="1.0"?&gt;<br />
+&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;<br />
+&lt;!-- Put site-specific property overrides in this file. --&gt;<br />
+&lt;configuration&gt;<br />
+&lt;property&gt;<br />
+&lt;name&gt;mapred.job.tracker&lt;/name&gt;<br />
+&lt;value&gt;local:54311&lt;/value&gt;<br />
+&lt;/property&gt;<br />
+&lt;property&gt;<br />
+&lt;name&gt;mapred.tasktracker.map.tasks.maximum&lt;/name&gt;<br />
+&lt;value&gt;100&lt;/value&gt;<br />
+&lt;/property&gt;<br />
+&lt;/configuration&gt;</p>
+<p><strong>conf/hdfs-site.xml</strong></p>
+<p>&lt;?xml version="1.0"?&gt;<br />
+&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;<br />
+&lt;!-- Put site-specific property overrides in this file. --&gt;<br />
+&lt;configuration&gt;<br />
+&lt;property&gt;<br />
+&lt;name&gt;dfs.replication&lt;/name&gt;<br />
+&lt;value&gt;2&lt;/value&gt;<br />
+&lt;/property&gt;<br />
+&lt;/configuration&gt;</p>
+<p><strong>conf/masters</strong><br />
+localhost</p>
+<p><strong>conf/slaves</strong><br />
+localhost</p>
+<p><strong>conf/hadoop-env.sh</strong><br />
+Uncomment the line where you provide the details about JAVA_HOME. It should be pointing to sun-jdk. That is as shown below.<br />
+export JAVA_HOME=/usr/java/default</p>
+<p>Setting the environmental variables for JDK and HADOOP<br />
+Open the file ~/.bashrc file and paste the below two command at the end of the file.</p>
+<p>&gt;vi ~/.bashrc</p>
+<p>export JAVA_HOME=/usr/java/default<br />
+export HADOOP_COMMON_HOME=/home/hadoop/hadoop-install/hadoop-0.21.0</p>
+<p>To get the immediate effect of .bashrc file, following command must be run.<br />
+$source ~/.bashrc</p>
+<p>Starting hadoop processes</p>
+<p>Format the namenode using the following command<br />
+bin/hdfs namenode -format</p>
+<p>Start the dfs:<br />
+hadoop@localhost:~/hadoop/hadoop-0.21.0&gt;bin/start-dfs.sh</p>
+<p>Start the mapred:<br />
+hadoop@localhost:~/hadoop/hadoop-0.21.0&gt;bin/start-mapred.sh</p>
+<p>Check for running processes.<br />
+hadoop@localhost:~/hadoop/hadoop-0.21.0&gt;jps<br />
+SecondaryNameNode<br />
+NameNode<br />
+DataNode<br />
+TaskTracker<br />
+JobTracker</p>

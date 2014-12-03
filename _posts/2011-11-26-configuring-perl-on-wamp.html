@@ -1,0 +1,60 @@
+---
+layout: post
+title: CONFIGURING PERL ON WAMP
+date: 2011-11-26 14:54:33.000000000 +05:30
+categories:
+- Bigdata
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '21508824'
+  _wpas_skip_twitter: '1'
+  _wpas_skip_fb: '1'
+  _wpas_skip_linkedin: '1'
+  twitter_cards_summary_img_size: a:6:{i:0;i:632;i:1;i:387;i:2;i:3;i:3;s:24:"width="632"
+    height="387"";s:4:"bits";i:8;s:4:"mime";s:9:"image/png";}
+  _oembed_d1f64b5a345f1e3e90607084b52b154f: ! '{{unknown}}'
+  _oembed_7542fca0c969a3eb1fc7880ecc363506: ! '{{unknown}}'
+  _oembed_65058ac73538dfa2a1ca6b00adb79c89: ! '{{unknown}}'
+  _oembed_b3f875f55eaff2842473af80b98d1f99: ! '{{unknown}}'
+  _oembed_7d4ba3a79955189189f0a670f5c4e8fc: ! '{{unknown}}'
+  _oembed_57a00c3a68c3f7e392fb954b3b9323b7: ! '{{unknown}}'
+  _oembed_b21b41bbf747673b8a8c6ee9bcb1d30b: ! '{{unknown}}'
+  _oembed_56c23ec7407357b44afc81eda4c37f64: ! '{{unknown}}'
+  _oembed_d7a41b32a5f2046946126f9575036bb3: ! '{{unknown}}'
+  _oembed_2e05343ad56f9139df6a21a62764f172: ! '{{unknown}}'
+  _oembed_3e8a304dcbde5eee96c9ce2001685347: ! '{{unknown}}'
+  _oembed_317c127481b40fc451de027a664c4249: ! '{{unknown}}'
+  _oembed_116e08f5e5b8b7a354dbf44e7308b46b: ! '{{unknown}}'
+author: 
+---
+<p>My 7 semester lab exams got scheduled for 22 of Nov,2011,to work out programs at hostel I have been struggling to configure perl to execute my "Web Programming Lab" programs. It took hell lot of time and could finally complete it.So i thought sharing the configuring the steps which might be useful for those who are stuck jus like how I was, few days before.<br />
+Perl, a scripting language  developed by Larry Wall in 1987. Perl has been constantly getting huge user response for its simplicity in text processing from the day of its release.<br />
+Here, I choose WAMP, a packages of independently-created programs which includes Apache(web server), MySQL(open source database) and  PHP as principal components.<br />
+Ok let's start with the step by step instructions to configure.<br />
+STEP 1: Download and install wamp 2. version.<a href="www.wampserver.com/en/download.php">Click here</a> to download.<br />
+STEP2:Similar to step 1 download and install Active Perl 5.10.0 build 1005 from <a href="http://www.activestate.com/ActivePerl">active state web</a>.<br />
+STEP 3:Now right click on wamp     server icon which is at the left corner of windows taskbar and select put offline option else select stop all the sevices.Once all wamp services are stopped again right click on wamp server icon and select Apache then open httdp.conf file.<br />
+STEP 4: Now we need to make some changes in this httpd.conf file let's do it one by one;<br />
+a)scroll down and look for the line "Options Indexes FollowSymLinks " and replace it with "Options Indexes FollowSymLinks Includes ExecCGI "</p>
+<p>[caption id="attachment_109" align="alignnone" width="300" caption="before"]<a href="http://shravanthimohan.files.wordpress.com/2011/11/untitled1.png"><img class="wp-image-109 " title="Untitled" src="assets/untitled1.png" alt="" width="300" height="180" /></a>[/caption]</p>
+<p>[caption id="attachment_101" align="alignnone" width="300" caption="after"]<a href="http://shravanthimohan.files.wordpress.com/2011/11/cmd1.png"><img class="size-medium wp-image-101 " title="cmd1" src="assets/cmd1.png?w=300" alt="" width="300" height="180" /></a>[/caption]</p>
+<p>b)scroll down and look for the line  "#AddHandler cgi-script .cgi" and replace it with "AddHandler cgi-script .cgi<br />
+AddHandler cgi-script .pl "</p>
+<p>[caption id="attachment_106" align="alignnone" width="300" caption="before"]<a href="http://shravanthimohan.files.wordpress.com/2011/11/untitled3.png"><img class="size-medium wp-image-106 " title="Untitled3" src="assets/untitled3.png?w=300" alt="" width="300" height="215" /></a>[/caption]</p>
+<p>[caption id="attachment_103" align="alignnone" width="300" caption="after"]<a href="http://shravanthimohan.files.wordpress.com/2011/11/cmd3.png"><img class="size-medium wp-image-103 " title="cmd3" src="assets/cmd3.png?w=300" alt="" width="300" height="145" /></a>[/caption]</p>
+<p>c)Now look for the line “DirectoryIndex index.php index.php3 index.html index.htm“  and  add index.cgi and index.pl in this line.</p>
+<p>[caption id="attachment_105" align="alignnone" width="300" caption="before"]<a href="http://shravanthimohan.files.wordpress.com/2011/11/untitled2.png"><img class="size-medium wp-image-105 " title="Untitled2" src="assets/untitled2.png?w=300" alt="" width="300" height="70" /></a>[/caption]</p>
+<p>[caption id="attachment_102" align="alignnone" width="300" caption="after"]<a href="http://shravanthimohan.files.wordpress.com/2011/11/cmd2.png"><img class="size-medium wp-image-102 " title="cmd2" src="assets/cmd2.png?w=300" alt="" width="300" height="58" /></a>[/caption]</p>
+<p>STEP 5:server is now configured and ready to run perl and cgi script.Now need to add additional repository and install from that repository. For that:<br />
+1. Open command prompt , then type<br />
+“ppm repo add uwinnipeg”</p>
+<p>[caption id="attachment_107" align="aligncenter" width="545" caption="screen of ppm installation"]<a href="http://shravanthimohan.files.wordpress.com/2011/11/ppm1.png"><img class=" wp-image-107" title="ppm1" src="assets/ppm1.png" alt="" width="545" height="275" /></a>[/caption]</p>
+<p>2. After the “uwinnipeg” repository is added successfully, install DBD-mysql by typing this command<br />
+“ppm install DBD-mysql”<br />
+Hmmm, now were done with configuring stuffs.Try  writing some simple perl scripts     and save them in  C:\wamp\bin\apache\Apache2.2.11\cgi-bin\<br />
+to run the scripts open the browser and type this url :http://localhost/cgi-bin/  followed by your program name as shown</p>
+<p><a href="http://shravanthimohan.files.wordpress.com/2011/11/ex_pl.png"><img class="aligncenter  wp-image-108" title="ex_pl" src="assets/ex_pl.png" alt="" width="406" height="323" /></a></p>
+<p><span style="text-decoration:underline;"><strong>NOTE: </strong></span> Please make sure that no process is running on port 80</p>

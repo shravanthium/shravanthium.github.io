@@ -1,0 +1,34 @@
+---
+layout: post
+title: ! 'Cloud Computing - Part 2 #cloud #virtualization'
+date: 2012-08-26 15:09:18.000000000 +05:30
+categories:
+- Cloud Technologies
+- Workshops and Conferences
+tags:
+- cloud
+- hypervisor
+- virtualization
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '21508824'
+  _wpas_done_facebook: '1'
+  tagazine-media: a:7:{s:7:"primary";s:61:"http://shravanthimohan.files.wordpress.com/2012/08/cloud1.png";s:6:"images";a:6:{s:62:"http://shravanthimohan.files.wordpress.com/2012/08/desktop.png";a:6:{s:8:"file_url";s:62:"http://shravanthimohan.files.wordpress.com/2012/08/desktop.png";s:5:"width";i:614;s:6:"height";i:460;s:4:"type";s:5:"image";s:4:"area";i:282440;s:9:"file_path";b:0;}s:77:"http://shravanthimohan.files.wordpress.com/2012/08/desktop-e1345974658572.png";a:6:{s:8:"file_url";s:77:"http://shravanthimohan.files.wordpress.com/2012/08/desktop-e1345974658572.png";s:5:"width";i:363;s:6:"height";i:242;s:4:"type";s:5:"image";s:4:"area";i:87846;s:9:"file_path";b:0;}s:57:"http://shravanthimohan.files.wordpress.com/2012/08/vm.png";a:6:{s:8:"file_url";s:57:"http://shravanthimohan.files.wordpress.com/2012/08/vm.png";s:5:"width";i:614;s:6:"height";i:460;s:4:"type";s:5:"image";s:4:"area";i:282440;s:9:"file_path";b:0;}s:72:"http://shravanthimohan.files.wordpress.com/2012/08/vm-e1345974614308.png";a:6:{s:8:"file_url";s:72:"http://shravanthimohan.files.wordpress.com/2012/08/vm-e1345974614308.png";s:5:"width";i:366;s:6:"height";i:307;s:4:"type";s:5:"image";s:4:"area";i:112362;s:9:"file_path";b:0;}s:61:"http://shravanthimohan.files.wordpress.com/2012/08/cloud1.png";a:6:{s:8:"file_url";s:61:"http://shravanthimohan.files.wordpress.com/2012/08/cloud1.png";s:5:"width";i:909;s:6:"height";i:664;s:4:"type";s:5:"image";s:4:"area";i:603576;s:9:"file_path";b:0;}s:75:"http://shravanthimohan.files.wordpress.com/2012/08/cloud-e1345974709921.png";a:6:{s:8:"file_url";s:75:"http://shravanthimohan.files.wordpress.com/2012/08/cloud-e1345974709921.png";s:5:"width";i:469;s:6:"height";i:376;s:4:"type";s:5:"image";s:4:"area";i:176344;s:9:"file_path";b:0;}}s:6:"videos";a:0:{}s:11:"image_count";i:6;s:6:"author";s:8:"21508824";s:7:"blog_id";s:8:"20931375";s:9:"mod_stamp";s:19:"2012-08-26
+    10:31:08";}
+author: 
+---
+<p style="text-align:justify;">I had been to Bangalore Barcamp 2012 yesterday and got an opportunity to meet openstack developers.One of them gave a wonderful analogy about cloud computing.I just wanted to share the same with you all.</p>
+<p style="text-align:justify;">Suppose that you have a desktop with following configuration.You install an operating system and you can boot only one operating system at time, moreover your operating system would consume only a part of your resource and the rest is just left unused.</p>
+<p style="text-align:justify;"><a href="http://shravanthimohan.files.wordpress.com/2012/08/desktop.png"><img class="aligncenter size-full wp-image-174" title="desktop" src="assets/desktop-e1345974658572.png" alt="" width="363" height="242" /></a></p>
+<p style="text-align:justify;">Now consider the concept of virtual machine.For the same above configuration here we put a layer(hypervisor) above, such that it totally hides the underlying information as shown below.With the help of this layer you can install any number of operating systems irrespective of the type of OS and you can boot all the operating systems simultaneously too. Not just that, you can also specify what amount of RAM and Hard Disk space you want to allocate for a particular OS.Is it not cool..?? :) Yes it is a super cool feature implemented as VMWare player and Virtual Box.<a href="http://shravanthimohan.wordpress.com/2011/04/25/my-virtual-experience/">Click here</a> for ubuntu installation using vmware player.</p>
+<p style="text-align:justify;">Hypervisors provide the means to logically divide a single, physical server or blade, allowing multiple operating systems to run securely on the same CPU and increase the CPU utilization.Some of the hypervisors in the market are KVM from Redhat , XEN used by Amazon, EXXI from Openstack, Hyper-V from Microsoft.</p>
+<p style="text-align:justify;">Where hardware partitioning allows for hardware consolidation, hypervisors allow for flexibility in how the virtual resources are defined and managed, making it a more-often used system consolidation solution.</p>
+<p style="text-align:justify;"><a href="http://shravanthimohan.files.wordpress.com/2012/08/vm.png"><img class="aligncenter size-full wp-image-175" title="vm" src="assets/vm-e1345974614308.png" alt="" width="366" height="307" /></a></p>
+<p style="text-align:justify;">But now the issue is even in this design we might expect some unused resources in each or the OS and now comes the concept of CLOUD to utilize the remaining resources too.Ah.. Developers grow greedy right.. :P</p>
+<p style="text-align:justify;">In cloud you set up a network of machines with varying configuration like one machine might have 2TB storage capacity and another machine might have 32GB RAM and few might have very less configuration too.What they do is just combine all the resources and when we ask for cloud service they give us a part of the resources whose size depends on the customers need.This process is called spawning of instances and all these accessed via internet.</p>
+<p style="text-align:justify;"><a href="http://shravanthimohan.files.wordpress.com/2012/08/cloud1.png"><img class="aligncenter  wp-image-180" title="cloud" src="assets/cloud1.png" alt="" width="561" height="313" /></a><a href="http://shravanthimohan.files.wordpress.com/2012/08/cloud-e1345974709921.png"><br />
+</a></p>
+<p style="text-align:justify;">An instance is nothing but set of resources.Cloud providers spawn the instances whose size are decided just like the way we have various T-shirts sizes(Small, Medium, Large, XL,XXL, etc). and they name it as micro instances,small instance,large instance, etc.Here we also have the concept of images which is nothing but a bootable image which might be any operating system.Hence whenever a customer chooses for particular type of instance(like ubuntu, solaris, fedora, windows,etc) appropriate images is loaded accordingly.</p>
+<p style="text-align:justify;">
