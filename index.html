@@ -1,22 +1,17 @@
----
-layout: default
----
+<!doctype html>
+<html lang=en>
+  <meta charset=utf-8>
+  <title>shravanthium</title>
+  <link rel=stylesheet href=style.css>
 
-  <div class ="container">
-
-  </div>
-
-  <div class="recent-posts">
-  <h1>Recent Posts</h1>
-    {% for post in site.posts limit: 3 %}   
-    <ul class="homepage-posts most-recent">
-    <li><span><h4>
-      <a href="{{ post.title }}">{{ post.title }}</a>
-     </li></span></h4>
-    </ul>
-    {% endfor %}
-    <ul>
-      <a href="{{ site.baseurl }}/list.html">View More...</a>
-</ul>
-  	</div>
-
+  <h1>shravanthium</h1>
+<main>
+    <article>
+      <header>
+        <h1>Blog post</h1>
+       <p>Published: <time datetime="2015-02-21">21st Feb, 2015</time></p>
+      </header>
+      <p>…</p>
+    </article>
+  </main>
+</html>
