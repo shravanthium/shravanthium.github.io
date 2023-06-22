@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Books Cost Calculator</title>
+  <style>
+        body, h1, h2, h3, h4, h5, h6, p, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set box-sizing to border-box for easier sizing */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #f2f2f2;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      margin-right: 20px;
+    }
+
+    .logo img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+      .site-title {
+        font-size: 20px;
+      }
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img src="https://aviratha.org/wp-content/uploads/2020/09/aaaah.png" height="50px" alt="Logo">
+        </div>
+      </header>
+  <div class="container">
+    <h1>Book Cost Calculator</h1>
+    <div class="form-group">
+      <label for="class1">Class 1 Count:</label>
+      <input type="number" id="class1" min="0">
+    </div>
+    <div class="form-group">
+      <label for="class2">Class 2 Count:</label>
+      <input type="number" id="class2" min="0">
+    </div>
+    <div class="form-group">
+      <label for="class3">Class 3 Count:</label>
+      <input type="number" id="class3" min="0">
+    </div>
+    <div class="form-group">
+        <label for="class4">Class 4 Count:</label>
+        <input type="number" id="class4" min="0">
+      </div>
+      <div class="form-group">
+        <label for="class5">Class 5 Count:</label>
+        <input type="number" id="class5" min="0">
+      </div>
+      <div class="form-group">
+        <label for="class6">Class 6 Count:</label>
+        <input type="number" id="class6" min="0">
+      </div>
+      <div class="form-group">
+        <label for="class7">Class 7 Count:</label>
+        <input type="number" id="class7" min="0">
+      </div>
+      <div class="form-group">
+        <label for="class8">Class 8 Count:</label>
+        <input type="number" id="class8" min="0">
+      </div>
+      <div class="form-group">
+        <label for="class9">Class 9 Count:</label>
+        <input type="number" id="class9" min="0">
+      </div>
+      <div class="form-group">
+        <label for="class10">Class 10 Count:</label>
+        <input type="number" id="class10" min="0">
+      </div>
+    <button onclick="calculateBooks()">Calculate</button>
+    <div>
+        <strong>Total: </strong>
+        <span id="totalCost">0</span>
+        <span> &#x20B9; </span>
+    </div>
+    <table id="bookTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Drawing</th>
+          <th>Square</th>
+          <th>Double Rule</th>
+          <th>Four Line</th>
+          <th>Single Rule</th>
+          <th>Horizantal Math</th>
+          <th>Unruled</th>
+          <th>Graph</th>
+          <th>Total Cost</th>
+        </tr>
+      </thead>
+      <tbody id="bookTableBody"></tbody>
+    </table>
+
+  </div>
+
+  <script>
+    function calculateBooks() {
+      const classCounts = {
+        1: parseInt(document.getElementById("class1").value) || 0,
+        2: parseInt(document.getElementById("class2").value) || 0,
+        3: parseInt(document.getElementById("class3").value) || 0,
+        4: parseInt(document.getElementById("class4").value) || 0,
+        5: parseInt(document.getElementById("class5").value) || 0,
+        6: parseInt(document.getElementById("class6").value) || 0,
+        7: parseInt(document.getElementById("class7").value) || 0,
+        8: parseInt(document.getElementById("class8").value) || 0,
+        9: parseInt(document.getElementById("class9").value) || 0,
+        10: parseInt(document.getElementById("class10").value) || 0,
+      };
+  
+      const bookCosts = {
+        Drawing: 24,
+        Square: 30,
+        DoubleRule: 30,
+        FourLine: 30,
+        SingleRule: 30,
+        HorizantalMath: 30,
+        Unruled: 30,
+        Graph:17
+      };
+  
+      const bookTable = document.getElementById("bookTableBody");
+      bookTable.innerHTML = "";
+      let total = 0;
+
+      for (const classIndex in classCounts) {
+        const count = classCounts[classIndex];
+        const guideline = {
+          1: { Drawing: 1, Square: 1, DoubleRule: 1, FourLine: 1, SingleRule: 0, HorizantalMath:0, Unruled:0, Graph:0 },
+          2: { Drawing: 1, Square: 1, DoubleRule: 1, FourLine: 1, SingleRule: 0, HorizantalMath:0, Unruled:0, Graph:0},
+          3: { Drawing: 1, Square: 0, DoubleRule: 1, FourLine: 1 , SingleRule: 2, HorizantalMath:0, Unruled:0, Graph:0},
+          4: { Drawing: 0, Square: 0, DoubleRule: 1, FourLine: 1, SingleRule: 2, HorizantalMath:1, Unruled:0, Graph:0 },
+          5: { Drawing: 0, Square: 0, DoubleRule: 1, FourLine: 1, SingleRule: 3, HorizantalMath:1, Unruled:1, Graph:0},
+          6: { Drawing: 0, Square: 0, DoubleRule: 1, FourLine: 1 , SingleRule: 3, HorizantalMath:1, Unruled:1, Graph:0},
+          7: { Drawing: 0, Square: 0, DoubleRule: 1, FourLine: 1, SingleRule: 3, HorizantalMath:1, Unruled:1, Graph:1 },
+          8: { Drawing: 0, Square: 0, DoubleRule: 1, FourLine: 0, SingleRule: 4, HorizantalMath:2, Unruled:2, Graph:1},
+          9: { Drawing: 0, Square: 0, DoubleRule: 0, FourLine: 0 , SingleRule: 4, HorizantalMath:2, Unruled:2, Graph:1},
+          10: { Drawing: 0, Square: 0, DoubleRule: 0, FourLine:0 , SingleRule: 4, HorizantalMath:2, Unruled:2, Graph:1},
+        };
+  
+        const row = document.createElement("tr");
+  
+        const classCell = document.createElement("td");
+        classCell.textContent = `Class ${classIndex}`;
+        row.appendChild(classCell);
+  
+        let totalCost = 0;
+  
+        for (const bookType in guideline[classIndex]) {
+          const bookCount = guideline[classIndex][bookType] * count;
+          const bookCost = bookCosts[bookType];
+          const totalBookCost = bookCount * bookCost;
+          totalCost += totalBookCost;
+  
+          const bookCell = document.createElement("td");
+          bookCell.textContent = bookCount;
+          row.appendChild(bookCell);
+        }
+  
+        const totalCostCell = document.createElement("td");
+        totalCostCell.textContent = totalCost;
+        total += totalCost
+        row.appendChild(totalCostCell);
+  
+        bookTable.appendChild(row);
+      }
+      console.log(total);
+      document.getElementById("bookTable").style.display = "table";
+      document.getElementById("totalCost").textContent = total;
+    }
+  </script>
+  
+</body>
+</html>
